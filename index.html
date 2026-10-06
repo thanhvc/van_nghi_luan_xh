@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Trợ Lý Văn 9 - Hành Trình Chinh Phục Nghị Luận Xã Hội (200 Bài Luyện)</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
   <canvas id="confetti-canvas"></canvas>
 
@@ -15,21 +17,20 @@
       <div class="brand-title">
         <div class="brand-icon">✍️</div>
         <div>
-          <h1>TRỢ LÝ VĂN 9: CHINH PHỤC NGHỊ LUẬN XÃ HỘI</h1>
-          <p>Phương pháp luận 20 năm kinh nghiệm – 600 bài luyện thực chiến không áp lực</p>
+          <h2>TRỢ LÝ VĂN 9: CHINH PHỤC NGHỊ LUẬN XÃ HỘI</h2>
         </div>
       </div>
       <div class="header-stats">
         <div class="stat-pill" title="Tổng số bài đã hoàn thành">
-          <span>📚 Hoàn thành:</span>
+          <span>📚</span> <span class="stat-label">Hoàn thành:</span>
           <span class="num" id="stat-total-completed">0</span><span>/600</span>
         </div>
         <div class="stat-pill" title="Điểm kinh nghiệm tích lũy">
-          <span>⭐ Điểm XP:</span>
+          <span>⭐</span> <span class="stat-label">Điểm XP:</span>
           <span class="num" id="stat-xp">0</span>
         </div>
         <div class="stat-pill" title="Chuỗi ngày rèn luyện liên tục">
-          <span>🔥 Chuỗi:</span>
+          <span>🔥</span> <span class="stat-label">Chuỗi:</span>
           <span class="num" id="stat-streak">1</span><span> ngày</span>
         </div>
       </div>
@@ -85,7 +86,7 @@
 
   <!-- Main Content Container -->
   <main class="main-content">
-    
+
     <!-- Top Progress Card -->
     <div class="progress-card">
       <div class="progress-info">
@@ -105,7 +106,8 @@
     <!-- Search & Global Status Filter -->
     <div class="filter-bar">
       <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
-        <label for="status-filter-select" style="font-size: 0.88rem; font-weight: 600; color: var(--text-muted);">Trạng thái:</label>
+        <label for="status-filter-select" style="font-size: 0.88rem; font-weight: 600; color: var(--text-muted);">Trạng
+          thái:</label>
         <select id="status-filter-select" class="search-box" style="width: auto; padding: 6px 12px;">
           <option value="all">Tất cả bài tập</option>
           <option value="uncompleted">Chưa hoàn thành</option>
@@ -128,9 +130,13 @@
       <div class="workspace-grid">
         <!-- Sidebar Explorer -->
         <aside class="exercise-sidebar">
+          <div class="drawer-drag-pill"></div>
           <div class="sidebar-header">
             <span>Danh sách 100 bài Cấp độ 1</span>
-            <span style="font-size: 0.8rem; color: var(--text-muted);">Click để chọn bài</span>
+            <span class="desktop-only-hint" style="font-size: 0.8rem; color: var(--text-muted);">Click để chọn
+              bài</span>
+            <button type="button" class="drawer-close-btn" onclick="closeExerciseDrawer()"
+              title="Đóng danh sách">✕</button>
           </div>
           <div class="sidebar-list" id="l1-sidebar-list">
             <!-- Rendered by JS -->
@@ -139,6 +145,22 @@
 
         <!-- Exercise Player -->
         <div class="exercise-card">
+          <!-- Mobile Drawer Bar -->
+          <div class="mobile-exercise-toolbar">
+            <button type="button" class="mobile-nav-btn" onclick="prevLevel1Exercise()" title="Bài trước">
+              <span>◀</span> <span>Trước</span>
+            </button>
+            <button type="button" class="mobile-drawer-trigger-btn" onclick="openExerciseDrawer()">
+              <span class="trigger-icon">📋</span>
+              <span class="trigger-label">Danh sách:</span>
+              <span class="trigger-badge" id="m-l1-cur-badge">Bài 1/100</span>
+              <span class="trigger-chevron">▲</span>
+            </button>
+            <button type="button" class="mobile-nav-btn" onclick="nextLevel1Exercise()" title="Bài tiếp theo">
+              <span>Sau</span> <span>▶</span>
+            </button>
+          </div>
+
           <div class="card-top">
             <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
               <span class="badge-tag badge-blue" id="l1-badge-id">Bài 1/100</span>
@@ -199,9 +221,13 @@
       <div class="workspace-grid">
         <!-- Sidebar Explorer -->
         <aside class="exercise-sidebar">
+          <div class="drawer-drag-pill"></div>
           <div class="sidebar-header">
             <span>Danh sách 100 bài Cấp độ 2</span>
-            <span style="font-size: 0.8rem; color: var(--text-muted);">Click để chọn bài</span>
+            <span class="desktop-only-hint" style="font-size: 0.8rem; color: var(--text-muted);">Click để chọn
+              bài</span>
+            <button type="button" class="drawer-close-btn" onclick="closeExerciseDrawer()"
+              title="Đóng danh sách">✕</button>
           </div>
           <div class="sidebar-list" id="l2-sidebar-list">
             <!-- Rendered by JS -->
@@ -210,6 +236,22 @@
 
         <!-- Exercise Player -->
         <div class="exercise-card">
+          <!-- Mobile Drawer Bar -->
+          <div class="mobile-exercise-toolbar">
+            <button type="button" class="mobile-nav-btn" onclick="prevLevel2Exercise()" title="Bài trước">
+              <span>◀</span> <span>Trước</span>
+            </button>
+            <button type="button" class="mobile-drawer-trigger-btn" onclick="openExerciseDrawer()">
+              <span class="trigger-icon">📋</span>
+              <span class="trigger-label">Danh sách:</span>
+              <span class="trigger-badge" id="m-l2-cur-badge">Bài 1/100</span>
+              <span class="trigger-chevron">▲</span>
+            </button>
+            <button type="button" class="mobile-nav-btn" onclick="nextLevel2Exercise()" title="Bài tiếp theo">
+              <span>Sau</span> <span>▶</span>
+            </button>
+          </div>
+
           <div class="card-top">
             <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
               <span class="badge-tag badge-blue" id="l2-badge-id">Bài 1/100</span>
@@ -239,12 +281,16 @@
                 <strong id="l2-similar-topic-title" style="color: #6b21a8; font-size: 1rem;">...</strong>
               </div>
               <div class="similar-sample-box">
-                <div style="font-size: 0.78rem; font-weight: 700; color: #7e22ce; text-transform: uppercase; margin-bottom: 4px;">Câu văn mẫu làm gương:</div>
+                <div
+                  style="font-size: 0.78rem; font-weight: 700; color: #7e22ce; text-transform: uppercase; margin-bottom: 4px;">
+                  Câu văn mẫu làm gương:</div>
                 <p id="l2-similar-sample-text" style="font-weight: 500; color: #4c1d95; line-height: 1.6;"></p>
               </div>
               <div class="similar-steps-box">
-                <div style="font-size: 0.82rem; font-weight: 700; color: var(--text-muted); margin-bottom: 4px;">🎯 Các bước tư duy để bạn làm theo:</div>
-                <ol id="l2-similar-steps-list" style="padding-left: 20px; font-size: 0.88rem; line-height: 1.6; color: var(--text-sub);"></ol>
+                <div style="font-size: 0.82rem; font-weight: 700; color: var(--text-muted); margin-bottom: 4px;">🎯 Các
+                  bước tư duy để bạn làm theo:</div>
+                <ol id="l2-similar-steps-list"
+                  style="padding-left: 20px; font-size: 0.88rem; line-height: 1.6; color: var(--text-sub);"></ol>
               </div>
               <div class="similar-transfer-prompt" id="l2-similar-transfer-prompt"></div>
             </div>
@@ -252,7 +298,8 @@
 
           <!-- Micro-writing Text Area -->
           <div class="writing-container">
-            <textarea id="l2-writing-input" class="writing-textarea" placeholder="Nhập câu văn của bạn tại đây... Hãy áp dụng đúng công thức để đạt điểm cao nhé!"></textarea>
+            <textarea id="l2-writing-input" class="writing-textarea"
+              placeholder="Nhập câu văn của bạn tại đây... Hãy áp dụng đúng công thức để đạt điểm cao nhé!"></textarea>
             <div class="writing-meta">
               <span>Đề xuất: Viết cô đọng trong 1 - 3 câu gãy gọn</span>
               <span id="l2-count-display">0 từ | 0 ký tự</span>
@@ -309,9 +356,13 @@
       <div class="workspace-grid">
         <!-- Sidebar Explorer -->
         <aside class="exercise-sidebar">
+          <div class="drawer-drag-pill"></div>
           <div class="sidebar-header">
             <span>Danh sách 100 bài Cấp độ 3</span>
-            <span style="font-size: 0.8rem; color: var(--text-muted);">Click để chọn bài</span>
+            <span class="desktop-only-hint" style="font-size: 0.8rem; color: var(--text-muted);">Click để chọn
+              bài</span>
+            <button type="button" class="drawer-close-btn" onclick="closeExerciseDrawer()"
+              title="Đóng danh sách">✕</button>
           </div>
           <div class="sidebar-list" id="l3-sidebar-list">
             <!-- Rendered by JS -->
@@ -320,6 +371,22 @@
 
         <!-- Exercise Player -->
         <div class="exercise-card">
+          <!-- Mobile Drawer Bar -->
+          <div class="mobile-exercise-toolbar">
+            <button type="button" class="mobile-nav-btn" onclick="prevLevel3Exercise()" title="Bài trước">
+              <span>◀</span> <span>Trước</span>
+            </button>
+            <button type="button" class="mobile-drawer-trigger-btn" onclick="openExerciseDrawer()">
+              <span class="trigger-icon">📋</span>
+              <span class="trigger-label">Danh sách:</span>
+              <span class="trigger-badge" id="m-l3-cur-badge">Bài 1/100</span>
+              <span class="trigger-chevron">▲</span>
+            </button>
+            <button type="button" class="mobile-nav-btn" onclick="nextLevel3Exercise()" title="Bài tiếp theo">
+              <span>Sau</span> <span>▶</span>
+            </button>
+          </div>
+
           <div class="card-top">
             <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
               <span class="badge-tag badge-blue" id="l3-badge-id">Bài 1/100</span>
@@ -340,7 +407,8 @@
 
           <!-- Similar Topic Hint (Accordion / Pedagogical Model) -->
           <div class="similar-hint-wrapper">
-            <button type="button" class="btn-similar-toggle" id="l3-btn-toggle-similar" onclick="toggleLevel3SimilarHint()">
+            <button type="button" class="btn-similar-toggle" id="l3-btn-toggle-similar"
+              onclick="toggleLevel3SimilarHint()">
               <span>💡 Xem khối văn mẫu từ một chủ đề tương tự (Học cách bắt chước tư duy)</span>
               <span id="l3-similar-toggle-icon">▼ Mở xem</span>
             </button>
@@ -350,12 +418,16 @@
                 <strong id="l3-similar-topic-title" style="color: #6b21a8; font-size: 1rem;">...</strong>
               </div>
               <div class="similar-sample-box">
-                <div style="font-size: 0.78rem; font-weight: 700; color: #7e22ce; text-transform: uppercase; margin-bottom: 4px;">Khối văn mẫu làm gương:</div>
+                <div
+                  style="font-size: 0.78rem; font-weight: 700; color: #7e22ce; text-transform: uppercase; margin-bottom: 4px;">
+                  Khối văn mẫu làm gương:</div>
                 <p id="l3-similar-sample-text" style="font-weight: 500; color: #4c1d95; line-height: 1.6;"></p>
               </div>
               <div class="similar-steps-box">
-                <div style="font-size: 0.82rem; font-weight: 700; color: var(--text-muted); margin-bottom: 4px;">🎯 Các bước tư duy để bạn làm theo:</div>
-                <ol id="l3-similar-steps-list" style="padding-left: 20px; font-size: 0.88rem; line-height: 1.6; color: var(--text-sub);"></ol>
+                <div style="font-size: 0.82rem; font-weight: 700; color: var(--text-muted); margin-bottom: 4px;">🎯 Các
+                  bước tư duy để bạn làm theo:</div>
+                <ol id="l3-similar-steps-list"
+                  style="padding-left: 20px; font-size: 0.88rem; line-height: 1.6; color: var(--text-sub);"></ol>
               </div>
               <div class="similar-transfer-prompt" id="l3-similar-transfer-prompt"></div>
             </div>
@@ -363,7 +435,8 @@
 
           <!-- Micro-writing Text Area -->
           <div class="writing-container">
-            <textarea id="l3-writing-input" class="writing-textarea" style="min-height: 140px;" placeholder="Nhập khối văn của bạn tại đây (khoảng 3 - 4 câu)... Hãy áp dụng đúng công thức Lego Module để đạt điểm cao nhé!"></textarea>
+            <textarea id="l3-writing-input" class="writing-textarea" style="min-height: 140px;"
+              placeholder="Nhập khối văn của bạn tại đây (khoảng 3 - 4 câu)... Hãy áp dụng đúng công thức Lego Module để đạt điểm cao nhé!"></textarea>
             <div class="writing-meta">
               <span>Đề xuất: Viết khối vi mô mạch lạc từ 3 - 4 câu</span>
               <span id="l3-count-display">0 từ | 0 ký tự</span>
@@ -411,17 +484,23 @@
       <div class="filter-group" style="margin-bottom: 18px;">
         <button class="filter-chip filter-l4-chip active" data-type="all">Tất cả (100 bài)</button>
         <button class="filter-chip filter-l4-chip" data-type="chua_sao_rong">1. Chữa bệnh sáo rỗng (25 bài)</button>
-        <button class="filter-chip filter-l4-chip" data-type="cat_tia_dan_chung">2. Cắt tỉa dẫn chứng CAR (25 bài)</button>
+        <button class="filter-chip filter-l4-chip" data-type="cat_tia_dan_chung">2. Cắt tỉa dẫn chứng CAR (25
+          bài)</button>
         <button class="filter-chip filter-l4-chip" data-type="bo_sung_phan_de">3. Bổ sung phản đề (25 bài)</button>
-        <button class="filter-chip filter-l4-chip" data-type="mach_lac_lien_tu">4. Mạch lạc hóa liên từ (25 bài)</button>
+        <button class="filter-chip filter-l4-chip" data-type="mach_lac_lien_tu">4. Mạch lạc hóa liên từ (25
+          bài)</button>
       </div>
 
       <div class="workspace-grid">
         <!-- Sidebar Explorer -->
         <aside class="exercise-sidebar">
+          <div class="drawer-drag-pill"></div>
           <div class="sidebar-header">
             <span>Danh sách 100 bài Cấp độ 4</span>
-            <span style="font-size: 0.8rem; color: var(--text-muted);">Click để chọn bài</span>
+            <span class="desktop-only-hint" style="font-size: 0.8rem; color: var(--text-muted);">Click để chọn
+              bài</span>
+            <button type="button" class="drawer-close-btn" onclick="closeExerciseDrawer()"
+              title="Đóng danh sách">✕</button>
           </div>
           <div class="sidebar-list" id="l4-sidebar-list">
             <!-- Rendered by JS -->
@@ -430,6 +509,22 @@
 
         <!-- Exercise Player -->
         <div class="exercise-card">
+          <!-- Mobile Drawer Bar -->
+          <div class="mobile-exercise-toolbar">
+            <button type="button" class="mobile-nav-btn" onclick="prevLevel4Exercise()" title="Bài trước">
+              <span>◀</span> <span>Trước</span>
+            </button>
+            <button type="button" class="mobile-drawer-trigger-btn" onclick="openExerciseDrawer()">
+              <span class="trigger-icon">📋</span>
+              <span class="trigger-label">Danh sách:</span>
+              <span class="trigger-badge" id="m-l4-cur-badge">Bài 1/100</span>
+              <span class="trigger-chevron">▲</span>
+            </button>
+            <button type="button" class="mobile-nav-btn" onclick="nextLevel4Exercise()" title="Bài tiếp theo">
+              <span>Sau</span> <span>▶</span>
+            </button>
+          </div>
+
           <div class="card-top">
             <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
               <span class="badge-tag badge-red" id="l4-badge-id">Bài 1/100</span>
@@ -441,7 +536,7 @@
           </div>
 
           <h2 class="exercise-title" id="l4-topic-title">Đang tải chủ đề...</h2>
-          
+
           <!-- Faulty Card -->
           <div class="faulty-card">
             <div class="faulty-title">⚠️ ĐOẠN VĂN BỊ "BỆNH" (CẦN PHẪU THUẬT SỬA LỖI):</div>
@@ -457,7 +552,8 @@
 
           <!-- Similar Topic Hint (Accordion) -->
           <div class="similar-hint-wrapper">
-            <button type="button" class="btn-similar-toggle" id="l4-btn-toggle-similar" onclick="toggleLevel4SimilarHint()">
+            <button type="button" class="btn-similar-toggle" id="l4-btn-toggle-similar"
+              onclick="toggleLevel4SimilarHint()">
               <span>💡 Xem ca phẫu thuật mẫu từ một chủ đề tương tự (Học cách bắt chước tư duy)</span>
               <span id="l4-similar-toggle-icon">▼ Mở xem</span>
             </button>
@@ -467,12 +563,16 @@
                 <strong id="l4-similar-topic-title" style="color: #6b21a8; font-size: 1rem;">...</strong>
               </div>
               <div class="similar-sample-box">
-                <div style="font-size: 0.78rem; font-weight: 700; color: #7e22ce; text-transform: uppercase; margin-bottom: 4px;">Đoạn văn sau phẫu thuật làm gương:</div>
+                <div
+                  style="font-size: 0.78rem; font-weight: 700; color: #7e22ce; text-transform: uppercase; margin-bottom: 4px;">
+                  Đoạn văn sau phẫu thuật làm gương:</div>
                 <p id="l4-similar-sample-text" style="font-weight: 500; color: #4c1d95; line-height: 1.6;"></p>
               </div>
               <div class="similar-steps-box">
-                <div style="font-size: 0.82rem; font-weight: 700; color: var(--text-muted); margin-bottom: 4px;">🎯 Các bước phẫu thuật để bạn làm theo:</div>
-                <ol id="l4-similar-steps-list" style="padding-left: 20px; font-size: 0.88rem; line-height: 1.6; color: var(--text-sub);"></ol>
+                <div style="font-size: 0.82rem; font-weight: 700; color: var(--text-muted); margin-bottom: 4px;">🎯 Các
+                  bước phẫu thuật để bạn làm theo:</div>
+                <ol id="l4-similar-steps-list"
+                  style="padding-left: 20px; font-size: 0.88rem; line-height: 1.6; color: var(--text-sub);"></ol>
               </div>
               <div class="similar-transfer-prompt" id="l4-similar-transfer-prompt"></div>
             </div>
@@ -480,7 +580,8 @@
 
           <!-- Micro-writing Text Area -->
           <div class="writing-container">
-            <textarea id="l4-writing-input" class="writing-textarea" style="min-height: 140px;" placeholder="Nhập đoạn văn sau khi bạn đã phẫu thuật sửa lỗi tại đây... Hãy áp dụng đúng kỹ thuật để cứu chữa đoạn văn nhé!"></textarea>
+            <textarea id="l4-writing-input" class="writing-textarea" style="min-height: 140px;"
+              placeholder="Nhập đoạn văn sau khi bạn đã phẫu thuật sửa lỗi tại đây... Hãy áp dụng đúng kỹ thuật để cứu chữa đoạn văn nhé!"></textarea>
             <div class="writing-meta">
               <span>Đề xuất: Viết lại đoạn văn chữa lành hoàn toàn các lỗi sáo rỗng hoặc lủng củng</span>
               <span id="l4-count-display">0 từ | 0 ký tự</span>
@@ -533,9 +634,12 @@
       <div class="workspace-grid">
         <!-- Sidebar Explorer -->
         <aside class="exercise-sidebar">
+          <div class="drawer-drag-pill"></div>
           <div class="sidebar-header">
             <span>Danh sách 100 đề thi Cấp độ 5</span>
-            <span style="font-size: 0.8rem; color: var(--text-muted);">Click để chọn đề</span>
+            <span class="desktop-only-hint" style="font-size: 0.8rem; color: var(--text-muted);">Click để chọn đề</span>
+            <button type="button" class="drawer-close-btn" onclick="closeExerciseDrawer()"
+              title="Đóng danh sách">✕</button>
           </div>
           <div class="sidebar-list" id="l5-sidebar-list">
             <!-- Rendered by JS -->
@@ -544,6 +648,22 @@
 
         <!-- Exercise Player -->
         <div class="exercise-card">
+          <!-- Mobile Drawer Bar -->
+          <div class="mobile-exercise-toolbar">
+            <button type="button" class="mobile-nav-btn" onclick="prevLevel5Exercise()" title="Đề trước">
+              <span>◀</span> <span>Trước</span>
+            </button>
+            <button type="button" class="mobile-drawer-trigger-btn" onclick="openExerciseDrawer()">
+              <span class="trigger-icon">📋</span>
+              <span class="trigger-label">Danh sách:</span>
+              <span class="trigger-badge" id="m-l5-cur-badge">Đề 1/100</span>
+              <span class="trigger-chevron">▲</span>
+            </button>
+            <button type="button" class="mobile-nav-btn" onclick="nextLevel5Exercise()" title="Đề tiếp theo">
+              <span>Sau</span> <span>▶</span>
+            </button>
+          </div>
+
           <div class="card-top">
             <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
               <span class="badge-tag badge-teal" id="l5-badge-id">Đề 1/100</span>
@@ -556,7 +676,8 @@
           </div>
 
           <h2 class="exercise-title" id="l5-topic-title">Đang tải đề thi...</h2>
-          <div class="exercise-question" id="l5-prompt-desc" style="font-size: 1.05rem; font-weight: 600; color: #1e3a8a;">Đang tải đề bài...</div>
+          <div class="exercise-question" id="l5-prompt-desc"
+            style="font-size: 1.05rem; font-weight: 600; color: #1e3a8a;">Đang tải đề bài...</div>
 
           <!-- Scaffold Outline Card -->
           <div class="scaffold-card">
@@ -570,7 +691,8 @@
 
           <!-- Similar Topic Hint (Accordion) -->
           <div class="similar-hint-wrapper">
-            <button type="button" class="btn-similar-toggle" id="l5-btn-toggle-similar" onclick="toggleLevel5SimilarHint()">
+            <button type="button" class="btn-similar-toggle" id="l5-btn-toggle-similar"
+              onclick="toggleLevel5SimilarHint()">
               <span>💡 Xem đoạn văn mẫu 200 chữ từ một đề tương tự (Học cách bắt chước tư duy)</span>
               <span id="l5-similar-toggle-icon">▼ Mở xem</span>
             </button>
@@ -580,12 +702,16 @@
                 <strong id="l5-similar-topic-title" style="color: #6b21a8; font-size: 1rem;">...</strong>
               </div>
               <div class="similar-sample-box">
-                <div style="font-size: 0.78rem; font-weight: 700; color: #7e22ce; text-transform: uppercase; margin-bottom: 4px;">Đoạn văn 200 chữ mẫu làm gương:</div>
+                <div
+                  style="font-size: 0.78rem; font-weight: 700; color: #7e22ce; text-transform: uppercase; margin-bottom: 4px;">
+                  Đoạn văn 200 chữ mẫu làm gương:</div>
                 <p id="l5-similar-sample-text" style="font-weight: 500; color: #4c1d95; line-height: 1.6;"></p>
               </div>
               <div class="similar-steps-box">
-                <div style="font-size: 0.82rem; font-weight: 700; color: var(--text-muted); margin-bottom: 4px;">🎯 Các bước lắp ghép 5 khối Lego hoàn chỉnh:</div>
-                <ol id="l5-similar-steps-list" style="padding-left: 20px; font-size: 0.88rem; line-height: 1.6; color: var(--text-sub);"></ol>
+                <div style="font-size: 0.82rem; font-weight: 700; color: var(--text-muted); margin-bottom: 4px;">🎯 Các
+                  bước lắp ghép 5 khối Lego hoàn chỉnh:</div>
+                <ol id="l5-similar-steps-list"
+                  style="padding-left: 20px; font-size: 0.88rem; line-height: 1.6; color: var(--text-sub);"></ol>
               </div>
               <div class="similar-transfer-prompt" id="l5-similar-transfer-prompt"></div>
             </div>
@@ -593,7 +719,8 @@
 
           <!-- Full Essay Text Area -->
           <div class="writing-container">
-            <textarea id="l5-writing-input" class="writing-textarea" style="min-height: 200px;" placeholder="Lắp ráp các khối Lego thành đoạn văn 200 chữ hoàn chỉnh tại đây... Nhớ KHÔNG xuống dòng giữa đoạn và bám sát cấu trúc 5 bước nhé!"></textarea>
+            <textarea id="l5-writing-input" class="writing-textarea" style="min-height: 200px;"
+              placeholder="Lắp ráp các khối Lego thành đoạn văn 200 chữ hoàn chỉnh tại đây... Nhớ KHÔNG xuống dòng giữa đoạn và bám sát cấu trúc 5 bước nhé!"></textarea>
             <div class="writing-meta">
               <span>Đề xuất: Đoạn văn hoàn chỉnh 180 - 220 từ (khoảng 2/3 trang giấy thi)</span>
               <span id="l5-count-display">0 từ | 0 ký tự</span>
@@ -637,10 +764,14 @@
       <!-- Sub Filters for Level 6 -->
       <div class="filter-group" style="margin-bottom: 18px;">
         <button class="filter-chip filter-l6-chip active" data-type="all">Tất cả (100 đề)</button>
-        <button class="filter-chip filter-l6-chip" data-type="de_chinh_thuc_cac_tinh">1. Đề thi tuyển sinh các tỉnh (30 đề)</button>
-        <button class="filter-chip filter-l6-chip" data-type="de_mo_phan_bien">2. Đề mở phản biện 2 chiều (25 đề)</button>
-        <button class="filter-chip filter-l6-chip" data-type="de_tich_hop_thoi_su">3. Đề thời sự & Gen Z (25 đề)</button>
-        <button class="filter-chip filter-l6-chip" data-type="de_danh_ngon_kho">4. Đề danh ngôn chiều sâu (20 đề)</button>
+        <button class="filter-chip filter-l6-chip" data-type="de_chinh_thuc_cac_tinh">1. Đề thi tuyển sinh các tỉnh (30
+          đề)</button>
+        <button class="filter-chip filter-l6-chip" data-type="de_mo_phan_bien">2. Đề mở phản biện 2 chiều (25
+          đề)</button>
+        <button class="filter-chip filter-l6-chip" data-type="de_tich_hop_thoi_su">3. Đề thời sự & Gen Z (25
+          đề)</button>
+        <button class="filter-chip filter-l6-chip" data-type="de_danh_ngon_kho">4. Đề danh ngôn chiều sâu (20
+          đề)</button>
       </div>
 
       <!-- 20-Minute Exam Simulator Timer Box -->
@@ -658,7 +789,8 @@
           <div class="timer-clock" id="l6-timer-display">20:00</div>
           <div class="timer-buttons">
             <button type="button" class="btn-timer btn-timer-start" id="l6-btn-timer-start">Bắt đầu ⏱️</button>
-            <button type="button" class="btn-timer btn-timer-pause" id="l6-btn-timer-pause" style="display: none;">Tạm dừng ⏸️</button>
+            <button type="button" class="btn-timer btn-timer-pause" id="l6-btn-timer-pause" style="display: none;">Tạm
+              dừng ⏸️</button>
             <button type="button" class="btn-timer btn-timer-reset" id="l6-btn-timer-reset">Đặt lại 🔄</button>
           </div>
         </div>
@@ -667,9 +799,12 @@
       <div class="workspace-grid">
         <!-- Sidebar Explorer -->
         <aside class="exercise-sidebar">
+          <div class="drawer-drag-pill"></div>
           <div class="sidebar-header">
             <span>100 đề thi thực chiến Cấp 6</span>
-            <span style="font-size: 0.8rem; color: var(--text-muted);">Click để chọn đề</span>
+            <span class="desktop-only-hint" style="font-size: 0.8rem; color: var(--text-muted);">Click để chọn đề</span>
+            <button type="button" class="drawer-close-btn" onclick="closeExerciseDrawer()"
+              title="Đóng danh sách">✕</button>
           </div>
           <div class="sidebar-list" id="l6-sidebar-list">
             <!-- Rendered by JS -->
@@ -678,6 +813,22 @@
 
         <!-- Exercise Player -->
         <div class="exercise-card">
+          <!-- Mobile Drawer Bar -->
+          <div class="mobile-exercise-toolbar">
+            <button type="button" class="mobile-nav-btn" onclick="prevLevel6Exercise()" title="Đề trước">
+              <span>◀</span> <span>Trước</span>
+            </button>
+            <button type="button" class="mobile-drawer-trigger-btn" onclick="openExerciseDrawer()">
+              <span class="trigger-icon">📋</span>
+              <span class="trigger-label">Danh sách:</span>
+              <span class="trigger-badge" id="m-l6-cur-badge">Đề 1/100</span>
+              <span class="trigger-chevron">▲</span>
+            </button>
+            <button type="button" class="mobile-nav-btn" onclick="nextLevel6Exercise()" title="Đề tiếp theo">
+              <span>Sau</span> <span>▶</span>
+            </button>
+          </div>
+
           <div class="card-top">
             <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
               <span class="badge-tag badge-red" id="l6-badge-id">Đề 1/100</span>
@@ -691,21 +842,24 @@
           </div>
 
           <h2 class="exercise-title" id="l6-topic-title">Đang tải đề thi...</h2>
-          <div class="exercise-question" id="l6-prompt-desc" style="font-size: 1.05rem; font-weight: 600; color: #1e3a8a;">Đang tải đề bài...</div>
+          <div class="exercise-question" id="l6-prompt-desc"
+            style="font-size: 1.05rem; font-weight: 600; color: #1e3a8a;">Đang tải đề bài...</div>
 
           <!-- Strategy Card -->
           <div class="scaffold-card" style="border-left-color: #f59e0b; background: #fffbeb;">
             <div class="scaffold-title" style="color: #b45309;">🎯 CHIẾN LƯỢC PHÂN BỔ 20 PHÚT CHUẨN PHÒNG THI:</div>
             <div class="scaffold-content" style="color: #92400e; font-size: 0.88rem;">
               <strong>3 phút đầu:</strong> Lập nháp xương cá tìm từ khóa hạt nhân và dẫn chứng CAR.<br>
-              <strong>15 phút tiếp theo:</strong> Viết trực tiếp vào bài thi (áp dụng công thức 5 khối Lego không xuống dòng).<br>
+              <strong>15 phút tiếp theo:</strong> Viết trực tiếp vào bài thi (áp dụng công thức 5 khối Lego không xuống
+              dòng).<br>
               <strong>2 phút cuối:</strong> Đọc rà soát lại lỗi chính tả, dấu câu và liên từ nối.
             </div>
           </div>
 
           <!-- Similar Topic Hint (Accordion) -->
           <div class="similar-hint-wrapper">
-            <button type="button" class="btn-similar-toggle" id="l6-btn-toggle-similar" onclick="toggleLevel6SimilarHint()">
+            <button type="button" class="btn-similar-toggle" id="l6-btn-toggle-similar"
+              onclick="toggleLevel6SimilarHint()">
               <span>💡 Xem bài thi mẫu từ một chủ đề tương tự (Tư duy chuyển giao phòng thi)</span>
               <span id="l6-similar-toggle-icon">▼ Mở xem</span>
             </button>
@@ -715,12 +869,16 @@
                 <strong id="l6-similar-topic-title" style="color: #6b21a8; font-size: 1rem;">...</strong>
               </div>
               <div class="similar-sample-box">
-                <div style="font-size: 0.78rem; font-weight: 700; color: #7e22ce; text-transform: uppercase; margin-bottom: 4px;">Đoạn văn 200 chữ điểm 9.0+ làm gương:</div>
+                <div
+                  style="font-size: 0.78rem; font-weight: 700; color: #7e22ce; text-transform: uppercase; margin-bottom: 4px;">
+                  Đoạn văn 200 chữ điểm 9.0+ làm gương:</div>
                 <p id="l6-similar-sample-text" style="font-weight: 500; color: #4c1d95; line-height: 1.6;"></p>
               </div>
               <div class="similar-steps-box">
-                <div style="font-size: 0.82rem; font-weight: 700; color: var(--text-muted); margin-bottom: 4px;">🎯 Chiến thuật 3 bước để bạn áp dụng vào đề thi này:</div>
-                <ol id="l6-similar-steps-list" style="padding-left: 20px; font-size: 0.88rem; line-height: 1.6; color: var(--text-sub);"></ol>
+                <div style="font-size: 0.82rem; font-weight: 700; color: var(--text-muted); margin-bottom: 4px;">🎯
+                  Chiến thuật 3 bước để bạn áp dụng vào đề thi này:</div>
+                <ol id="l6-similar-steps-list"
+                  style="padding-left: 20px; font-size: 0.88rem; line-height: 1.6; color: var(--text-sub);"></ol>
               </div>
               <div class="similar-transfer-prompt" id="l6-similar-transfer-prompt"></div>
             </div>
@@ -728,7 +886,8 @@
 
           <!-- Full Essay Text Area -->
           <div class="writing-container">
-            <textarea id="l6-writing-input" class="writing-textarea" style="min-height: 220px;" placeholder="Bắt đầu tính giờ 20 phút và viết đoạn văn thực chiến tại đây... Hãy viết độc lập, không ngắt dòng giữa chừng và bám sát thời gian nhé!"></textarea>
+            <textarea id="l6-writing-input" class="writing-textarea" style="min-height: 220px;"
+              placeholder="Bắt đầu tính giờ 20 phút và viết đoạn văn thực chiến tại đây... Hãy viết độc lập, không ngắt dòng giữa chừng và bám sát thời gian nhé!"></textarea>
             <div class="writing-meta">
               <span>Quy định: Đúng 1 đoạn văn hoàn chỉnh, dung lượng khoảng 180 - 220 từ</span>
               <span id="l6-count-display">0 từ | 0 ký tự</span>
@@ -772,13 +931,17 @@
       <div class="workspace-grid">
         <!-- Sidebar: Danh sách chủ đề Mindmap -->
         <aside class="exercise-sidebar">
+          <div class="drawer-drag-pill"></div>
           <div class="sidebar-header">
             <span>🧠 34 Chủ đề Mindmap</span>
-            <span style="font-size: 0.8rem; color: var(--text-muted);">Click chọn đề</span>
+            <span class="desktop-only-hint" style="font-size: 0.8rem; color: var(--text-muted);">Click chọn đề</span>
+            <button type="button" class="drawer-close-btn" onclick="closeExerciseDrawer()"
+              title="Đóng danh sách">✕</button>
           </div>
 
           <!-- Mindmap category filter chips -->
-          <div class="filter-group" style="padding: 10px 12px 6px 12px; margin-bottom: 0; display: flex; flex-wrap: wrap; gap: 6px;">
+          <div class="filter-group"
+            style="padding: 10px 12px 6px 12px; margin-bottom: 0; display: flex; flex-wrap: wrap; gap: 6px;">
             <button class="filter-chip filter-mm-chip active" data-cat="all">Tất cả (34)</button>
             <button class="filter-chip filter-mm-chip" data-cat="Tư tưởng đạo lý">Đạo lý (15)</button>
             <button class="filter-chip filter-mm-chip" data-cat="Hiện tượng đời sống">Hiện tượng (11)</button>
@@ -787,7 +950,8 @@
 
           <!-- Search input -->
           <div style="padding: 6px 12px 10px 12px;">
-            <input type="text" id="mm-search-input" class="search-box" placeholder="🔍 Tìm kiếm chủ đề..." style="width: 100%; padding: 6px 10px; font-size: 0.84rem;">
+            <input type="text" id="mm-search-input" class="search-box" placeholder="🔍 Tìm kiếm chủ đề..."
+              style="width: 100%; padding: 6px 10px; font-size: 0.84rem;">
           </div>
 
           <!-- List of exercises -->
@@ -798,19 +962,39 @@
 
         <!-- Main interactive workspace -->
         <div class="exercise-card">
+          <!-- Mobile Drawer Bar -->
+          <div class="mobile-exercise-toolbar">
+            <button type="button" class="mobile-nav-btn" onclick="prevMindmapExercise()" title="Chủ đề trước">
+              <span>◀</span> <span>Trước</span>
+            </button>
+            <button type="button" class="mobile-drawer-trigger-btn" onclick="openExerciseDrawer()">
+              <span class="trigger-icon">🧠</span>
+              <span class="trigger-label">Danh sách:</span>
+              <span class="trigger-badge" id="m-mm-cur-badge">Đề 1/34</span>
+              <span class="trigger-chevron">▲</span>
+            </button>
+            <button type="button" class="mobile-nav-btn" onclick="nextMindmapExercise()" title="Chủ đề tiếp theo">
+              <span>Sau</span> <span>▶</span>
+            </button>
+          </div>
+
           <!-- Exercise Header Card -->
           <div style="margin-bottom: 20px;">
-            <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 12px;">
+            <div
+              style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 12px;">
               <div>
                 <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px;">
-                  <span class="badge" id="mm-topic-category" style="background: #e0e7ff; color: #4338ca;">Tư tưởng đạo lý</span>
-                  <span class="badge" id="mm-topic-status" style="background: #f1f5f9; color: var(--text-muted);">Chưa hoàn thành</span>
+                  <span class="badge" id="mm-topic-category" style="background: #e0e7ff; color: #4338ca;">Tư tưởng đạo
+                    lý</span>
+                  <span class="badge" id="mm-topic-status" style="background: #f1f5f9; color: var(--text-muted);">Chưa
+                    hoàn thành</span>
                 </div>
                 <h2 id="mm-topic-title" style="font-size: 1.4rem; font-weight: 700; color: #0f172a;">
                   Lòng kiên trì trước nghịch cảnh
                 </h2>
                 <p style="font-size: 0.88rem; color: var(--text-muted); margin-top: 4px;">
-                  💡 <strong>Phương pháp:</strong> Nhấp vào từng <strong>Nhánh cha</strong> để mở ô ghép từ. Đọc kĩ các cụm từ gợi ý và bấm chọn 2 cụm từ chuẩn xác nhất cho mỗi nhánh.
+                  💡 <strong>Phương pháp:</strong> Nhấp vào từng <strong>Nhánh cha</strong> để mở ô ghép từ. Đọc kĩ các
+                  cụm từ gợi ý và bấm chọn 2 cụm từ chuẩn xác nhất cho mỗi nhánh.
                 </p>
               </div>
 
@@ -826,11 +1010,13 @@
             </div>
 
             <!-- Action buttons bar -->
-            <div class="exercise-nav" style="margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+            <div class="exercise-nav"
+              style="margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
               <div style="display: flex; gap: 8px; flex-wrap: wrap;">
                 <button class="btn btn-primary" id="mm-btn-evaluate">✅ Kiểm Tra & Chấm Điểm</button>
                 <button class="btn btn-outline" id="mm-btn-reset">🔄 Làm Lại Sơ Đồ</button>
-                <button class="btn btn-outline" id="mm-btn-export-outline" style="color: #0284c7; border-color: #bae6fd;">📋 Chuyển Thành Dàn Ý</button>
+                <button class="btn btn-outline" id="mm-btn-export-outline"
+                  style="color: #0284c7; border-color: #bae6fd;">📋 Chuyển Thành Dàn Ý</button>
               </div>
               <div style="display: flex; gap: 8px;">
                 <button class="btn btn-outline" id="mm-btn-random">🎲 Ngẫu Nhiên</button>
@@ -864,14 +1050,20 @@
 
           <!-- Outline Modal/Card -->
           <div id="mm-outline-box" class="rubric-box" style="margin-top: 20px; display: none;">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 10px;">
-              <div class="rubric-title" style="margin-bottom: 0;">📖 DÀN Ý BÀI VĂN NGHỊ LUẬN HOÀN CHỈNH (KẾT XUẤT TỪ SƠ ĐỒ):</div>
+            <div
+              style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 10px;">
+              <div class="rubric-title" style="margin-bottom: 0;">📖 DÀN Ý BÀI VĂN NGHỊ LUẬN HOÀN CHỈNH (KẾT XUẤT TỪ SƠ
+                ĐỒ):</div>
               <div style="display: flex; gap: 8px;">
-                <button class="btn btn-primary" id="mm-btn-save-notebook" style="padding: 6px 14px; font-size: 0.82rem;">💾 Lưu Vào Sổ Tay Của Em</button>
-                <button class="btn btn-outline" id="mm-btn-copy-outline" style="padding: 6px 14px; font-size: 0.82rem;">📋 Sao Chép Dàn Ý</button>
+                <button class="btn btn-primary" id="mm-btn-save-notebook"
+                  style="padding: 6px 14px; font-size: 0.82rem;">💾 Lưu Vào Sổ Tay Của Em</button>
+                <button class="btn btn-outline" id="mm-btn-copy-outline"
+                  style="padding: 6px 14px; font-size: 0.82rem;">📋 Sao Chép Dàn Ý</button>
               </div>
             </div>
-            <div id="mm-outline-content" style="font-size: 0.92rem; line-height: 1.7; color: #334155; background: white; padding: 16px; border-radius: var(--radius-sm); border: 1px solid #e2e8f0; white-space: pre-wrap;"></div>
+            <div id="mm-outline-content"
+              style="font-size: 0.92rem; line-height: 1.7; color: #334155; background: white; padding: 16px; border-radius: var(--radius-sm); border: 1px solid #e2e8f0; white-space: pre-wrap;">
+            </div>
           </div>
 
         </div>
@@ -883,14 +1075,17 @@
       <div class="journey-panel">
         <div class="journey-header">
           <div>
-            <h2 style="font-size: 1.35rem; font-weight: 700; color: #1e293b;">📈 BÁO CÁO HÀNH TRÌNH LUYỆN TẬP TỪNG NGÀY</h2>
+            <h2 style="font-size: 1.35rem; font-weight: 700; color: #1e293b;">📈 BÁO CÁO HÀNH TRÌNH LUYỆN TẬP TỪNG NGÀY
+            </h2>
             <p style="font-size: 0.88rem; color: var(--text-muted); margin-top: 4px;">
-              Dữ liệu được lưu trữ tự động trong trình duyệt (localStorage) – Theo dõi số câu hoàn thành, mức độ và điểm số từng ngày
+              Dữ liệu được lưu trữ tự động trong trình duyệt (localStorage) – Theo dõi số câu hoàn thành, mức độ và điểm
+              số từng ngày
             </p>
           </div>
           <div style="display: flex; gap: 10px; flex-wrap: wrap;">
             <button class="btn btn-primary" id="btn-print-journey">🖨️ Xuất Báo Cáo (In/PDF)</button>
-            <button class="btn btn-outline" id="btn-clear-history" style="color: #dc2626; border-color: #fca5a5;">🗑️ Đặt lại lịch sử</button>
+            <button class="btn btn-outline" id="btn-clear-history" style="color: #dc2626; border-color: #fca5a5;">🗑️
+              Đặt lại lịch sử</button>
           </div>
         </div>
 
@@ -938,14 +1133,19 @@
 
         <!-- Day-by-Day Detailed Log -->
         <div class="journey-timeline-section">
-          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; flex-wrap: wrap; gap: 10px;">
-            <h3 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 0; color: #0f172a; display: flex; align-items: center; gap: 8px;">
+          <div
+            style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; flex-wrap: wrap; gap: 10px;">
+            <h3
+              style="font-size: 1.15rem; font-weight: 700; margin-bottom: 0; color: #0f172a; display: flex; align-items: center; gap: 8px;">
               <span>🗓️ Nhật ký chi tiết từng ngày</span>
-              <span style="font-size: 0.82rem; font-weight: 500; color: var(--text-muted);">(Nhấp vào từng ngày để mở rộng / thu gọn bài làm)</span>
+              <span style="font-size: 0.82rem; font-weight: 500; color: var(--text-muted);">(Nhấp vào từng ngày để mở
+                rộng / thu gọn bài làm)</span>
             </h3>
             <div style="display: flex; gap: 8px;">
-              <button type="button" class="btn btn-outline" id="btn-journey-expand-all" style="padding: 5px 12px; font-size: 0.82rem;">📖 Mở rộng tất cả</button>
-              <button type="button" class="btn btn-outline" id="btn-journey-collapse-all" style="padding: 5px 12px; font-size: 0.82rem;">📂 Thu gọn tất cả</button>
+              <button type="button" class="btn btn-outline" id="btn-journey-expand-all"
+                style="padding: 5px 12px; font-size: 0.82rem;">📖 Mở rộng tất cả</button>
+              <button type="button" class="btn btn-outline" id="btn-journey-collapse-all"
+                style="padding: 5px 12px; font-size: 0.82rem;">📂 Thu gọn tất cả</button>
             </div>
           </div>
           <div id="journey-timeline-list">
@@ -963,7 +1163,8 @@
         <div class="notebook-header">
           <div>
             <h2 style="font-size: 1.3rem; font-weight: 700;">📖 SỔ TAY BÀI VIẾT CỦA EM</h2>
-            <p style="font-size: 0.88rem; color: var(--text-muted);">Tổng hợp các câu văn chất lượng cao bạn đã rèn luyện và lưu lại</p>
+            <p style="font-size: 0.88rem; color: var(--text-muted);">Tổng hợp các câu văn chất lượng cao bạn đã rèn
+              luyện và lưu lại</p>
           </div>
           <button class="btn btn-outline" id="btn-print-notebook">🖨️ In / Xuất PDF</button>
         </div>
@@ -977,8 +1178,10 @@
     <!-- ==================== VIEW 4: TIPS & MINDMAP ==================== -->
     <section id="view-tips" style="display: none;">
       <div class="mindmap-container">
-        <h2 style="font-size: 1.4rem; font-weight: 700; margin-bottom: 8px;">🗺️ BẢN ĐỒ TƯ DUY NGHỊ LUẬN XÃ HỘI LỚP 9</h2>
-        <p style="color: var(--text-muted); margin-bottom: 24px;">Toàn bộ cấu trúc bài thi vào lớp 10 cô đọng trong một trang cẩm nang</p>
+        <h2 style="font-size: 1.4rem; font-weight: 700; margin-bottom: 8px;">🗺️ BẢN ĐỒ TƯ DUY NGHỊ LUẬN XÃ HỘI LỚP 9
+        </h2>
+        <p style="color: var(--text-muted); margin-bottom: 24px;">Toàn bộ cấu trúc bài thi vào lớp 10 cô đọng trong một
+          trang cẩm nang</p>
 
         <div class="tip-grid">
           <div class="tip-card">
@@ -1005,7 +1208,8 @@
           <div class="tip-card">
             <h3>⚖️ Kỹ Thuật Phản Đề Điểm 8+</h3>
             <p style="font-size: 0.92rem; line-height: 1.7; margin-bottom: 8px;">
-              Dùng mẫu câu thần thánh: <em>"Tuy nhiên, [Đề cao X] không đồng nghĩa với [Tiêu cực/Thái quá], chúng ta cần phê phán..."</em>
+              Dùng mẫu câu thần thánh: <em>"Tuy nhiên, [Đề cao X] không đồng nghĩa với [Tiêu cực/Thái quá], chúng ta cần
+                phê phán..."</em>
             </p>
             <ul style="padding-left: 20px; font-size: 0.92rem; line-height: 1.8;">
               <li>Tự tin $\ne$ Tự phụ, coi thường người khác.</li>
@@ -1017,8 +1221,10 @@
           <div class="tip-card">
             <h3>🚫 Tránh Bệnh "Hô Khẩu Hiệu Sáo Rỗng"</h3>
             <p style="font-size: 0.92rem; line-height: 1.7;">
-              <strong>Không viết:</strong> <em>"Em xin hứa học thật giỏi để trở thành cháu ngoan Bác Hồ, mai sau xây dựng đất nước."</em><br>
-              <strong>Nên viết:</strong> <em>"Đứng trước kỳ thi vào lớp 10, bài học ý chí nhắc nhở tôi kiên trì giải nốt bài toán khó tối nay, từ bỏ điện thoại để dồn sức cho mục tiêu trường cấp 3 mơ ước."</em>
+              <strong>Không viết:</strong> <em>"Em xin hứa học thật giỏi để trở thành cháu ngoan Bác Hồ, mai sau xây
+                dựng đất nước."</em><br>
+              <strong>Nên viết:</strong> <em>"Đứng trước kỳ thi vào lớp 10, bài học ý chí nhắc nhở tôi kiên trì giải nốt
+                bài toán khó tối nay, từ bỏ điện thoại để dồn sức cho mục tiêu trường cấp 3 mơ ước."</em>
             </p>
           </div>
         </div>
@@ -1026,6 +1232,9 @@
     </section>
 
   </main>
+
+  <!-- Backdrop for Mobile Bottom Sheet / Drawer -->
+  <div id="mobile-drawer-backdrop" class="drawer-backdrop" onclick="closeExerciseDrawer()"></div>
 
   <!-- Data Scripts & App Logic -->
   <script src="js/data_level1.js"></script>
@@ -1037,4 +1246,5 @@
   <script src="js/data_mindmap.js"></script>
   <script src="js/app.js"></script>
 </body>
+
 </html>

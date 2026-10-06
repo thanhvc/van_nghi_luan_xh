@@ -50,7 +50,7 @@ body {
 .app-header {
   background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
   color: white;
-  padding: 24px 20px;
+  padding: 16px 20px;
   box-shadow: var(--shadow-md);
   position: sticky;
   top: 0;
@@ -80,8 +80,9 @@ body {
   border-radius: var(--radius-md);
 }
 
-.brand-title h1 {
-  font-size: 1.4rem;
+.brand-title h1,
+.brand-title h2 {
+  font-size: 1.35rem;
   font-weight: 700;
   letter-spacing: -0.02em;
 }
@@ -292,10 +293,12 @@ body {
   align-items: start;
 }
 
-@media (max-width: 900px) {
-  .workspace-grid {
-    grid-template-columns: 1fr;
-  }
+/* Mobile Drawer & Toolbar elements hidden by default on desktop */
+.mobile-exercise-toolbar,
+.drawer-drag-pill,
+.drawer-close-btn,
+.drawer-backdrop {
+  display: none !important;
 }
 
 /* Exercise Sidebar List */
@@ -1646,6 +1649,383 @@ body {
   background: #fef3c7;
   border-left: 4px solid #f59e0b;
   color: #78350f;
+}
+
+/* ========================================================
+   RESPONSIVE MOBILE & TABLET DRAWER / BOTTOM SHEET (< 900px)
+   ======================================================== */
+@media (max-width: 900px) {
+  /* Compact Header on Tablet & Mobile */
+  .app-header {
+    padding: 10px 16px !important;
+  }
+
+  .header-container {
+    gap: 10px !important;
+  }
+
+  .brand-title {
+    gap: 8px !important;
+  }
+
+  .brand-icon {
+    font-size: 22px !important;
+    padding: 4px 8px !important;
+  }
+
+  .brand-title h1,
+  .brand-title h2 {
+    font-size: 1.05rem !important;
+  }
+
+  .header-stats {
+    gap: 6px !important;
+  }
+
+  .stat-pill {
+    padding: 4px 10px !important;
+    font-size: 0.8rem !important;
+    gap: 6px !important;
+  }
+
+  .nav-tabs-container {
+    top: 56px !important;
+  }
+
+  .nav-tabs {
+    padding: 8px 12px !important;
+    gap: 6px !important;
+  }
+
+  .tab-btn {
+    padding: 6px 12px !important;
+    font-size: 0.84rem !important;
+  }
+
+  body.drawer-locked {
+    overflow: hidden !important;
+  }
+
+  .workspace-grid {
+    display: block !important;
+  }
+
+  /* Mobile Toolbar at the top of exercise card */
+  .mobile-exercise-toolbar {
+    display: flex !important;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    background: #f8fafc;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 8px 10px;
+    margin-bottom: 16px;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .mobile-nav-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    padding: 8px 12px;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-sub);
+    cursor: pointer;
+    transition: all 0.15s ease;
+    white-space: nowrap;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .mobile-nav-btn:hover,
+  .mobile-nav-btn:active {
+    background: var(--primary-light);
+    border-color: var(--primary-border);
+    color: var(--primary);
+  }
+
+  .mobile-drawer-trigger-btn {
+    flex: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 8px 10px;
+    background: white;
+    border: 1.5px solid var(--primary-border);
+    border-radius: var(--radius-sm);
+    font-size: 0.86rem;
+    font-weight: 600;
+    color: var(--primary);
+    cursor: pointer;
+    box-shadow: var(--shadow-sm);
+    transition: all 0.15s ease;
+    white-space: nowrap;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    overflow: hidden;
+  }
+
+  .mobile-drawer-trigger-btn:hover,
+  .mobile-drawer-trigger-btn:active {
+    background: var(--primary-light);
+    border-color: var(--primary);
+  }
+
+  .mobile-drawer-trigger-btn .trigger-badge {
+    background: var(--primary);
+    color: white;
+    font-size: 0.78rem;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 999px;
+  }
+
+  .mobile-drawer-trigger-btn .trigger-chevron {
+    font-size: 0.68rem;
+    color: var(--primary);
+  }
+
+  /* Backdrop Overlay */
+  .drawer-backdrop {
+    display: block !important;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    z-index: 1040;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.25s ease, visibility 0.25s ease;
+  }
+
+  .drawer-backdrop.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  /* Sidebar turns into Bottom Sheet / Drawer */
+  .exercise-sidebar {
+    position: fixed !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    top: auto !important;
+    width: 100% !important;
+    max-width: 100vw !important;
+    height: 80vh !important;
+    max-height: 80vh !important;
+    background: #ffffff !important;
+    border-radius: 20px 20px 0 0 !important;
+    border: 1px solid var(--border) !important;
+    border-bottom: none !important;
+    box-shadow: 0 -10px 32px rgba(0, 0, 0, 0.28) !important;
+    z-index: 1050 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    transform: translateY(105%) !important;
+    transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.32s ease !important;
+    visibility: hidden;
+    overflow: hidden !important;
+  }
+
+  .exercise-sidebar.drawer-open {
+    transform: translateY(0) !important;
+    visibility: visible !important;
+  }
+
+  /* Drag pill handle */
+  .drawer-drag-pill {
+    display: block !important;
+    width: 44px;
+    height: 5px;
+    background: #cbd5e1;
+    border-radius: 999px;
+    margin: 10px auto 4px auto;
+    flex-shrink: 0;
+  }
+
+  /* Drawer Header */
+  .sidebar-header {
+    padding: 10px 16px 12px 16px;
+    background: #f8fafc;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-shrink: 0;
+  }
+
+  .desktop-only-hint {
+    display: none !important;
+  }
+
+  .drawer-close-btn {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #e2e8f0;
+    border: 1px solid #cbd5e1;
+    color: var(--text-main);
+    font-size: 0.95rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    flex-shrink: 0;
+    line-height: 1;
+    padding: 0;
+  }
+
+  .drawer-close-btn:active {
+    background: #cbd5e1;
+    transform: scale(0.92);
+  }
+
+  /* List inside drawer */
+  .sidebar-list {
+    flex: 1;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 10px 12px 24px 12px;
+    max-height: none;
+  }
+
+  .sidebar-item {
+    padding: 12px 14px;
+    font-size: 0.92rem;
+    min-height: 48px;
+  }
+
+  /* Exercise Card optimizations on mobile */
+  .exercise-card {
+    padding: 18px 14px;
+    border-radius: var(--radius-md);
+  }
+
+  .exercise-title {
+    font-size: 1.15rem;
+    line-height: 1.45;
+  }
+
+  .fill-board {
+    padding: 14px;
+    font-size: 1.02rem;
+    line-height: 2.0;
+  }
+
+  .blank-slot {
+    min-width: 105px;
+    padding: 3px 8px;
+    margin: 2px 4px;
+    font-size: 0.92rem;
+  }
+
+  .card-actions {
+    gap: 8px;
+  }
+
+  .card-actions .btn {
+    padding: 9px 12px;
+    font-size: 0.88rem;
+    flex: 1 1 calc(50% - 6px);
+    justify-content: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .app-header {
+    padding: 8px 12px !important;
+  }
+
+  .header-container {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 6px !important;
+    flex-wrap: nowrap !important;
+  }
+
+  .brand-title {
+    gap: 6px !important;
+    min-width: 0 !important;
+    flex: 1 1 auto !important;
+  }
+
+  .brand-icon {
+    font-size: 18px !important;
+    padding: 3px 6px !important;
+    border-radius: var(--radius-sm) !important;
+  }
+
+  .brand-title h1,
+  .brand-title h2 {
+    font-size: 0.88rem !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    line-height: 1.2 !important;
+  }
+
+  .header-stats {
+    gap: 4px !important;
+    flex-wrap: nowrap !important;
+    flex-shrink: 0 !important;
+    width: auto !important;
+  }
+
+  .stat-pill {
+    padding: 3px 7px !important;
+    font-size: 0.72rem !important;
+    gap: 4px !important;
+    white-space: nowrap !important;
+  }
+
+  .stat-label {
+    display: none !important;
+  }
+
+  .nav-tabs-container {
+    top: 48px !important;
+  }
+
+  .nav-tabs {
+    padding: 6px 8px !important;
+    gap: 4px !important;
+  }
+
+  .tab-btn {
+    padding: 5px 9px !important;
+    font-size: 0.78rem !important;
+  }
+
+  .tab-count {
+    font-size: 0.68rem !important;
+    padding: 1px 4px !important;
+  }
+
+  .mobile-drawer-trigger-btn .trigger-label {
+    display: none !important;
+  }
+
+  .card-actions .btn {
+    flex: 1 1 100% !important;
+  }
 }
 
 /* Print Optimization */

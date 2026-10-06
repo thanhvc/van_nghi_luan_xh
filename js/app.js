@@ -366,6 +366,7 @@ function updateStatsHeader() {
 
 function switchTab(tab) {
   STATE.currentTab = tab;
+  closeExerciseDrawer();
   
   document.querySelectorAll('.tab-btn').forEach(btn => {
     btn.classList.toggle('active', btn.dataset.tab === tab);
@@ -414,6 +415,7 @@ function switchTab(tab) {
   } else if (tab === 'notebook') {
     renderNotebookView();
   }
+  syncMobileDrawerBadges();
 }
 
 
@@ -480,6 +482,7 @@ function loadLevel1Exercise(id) {
   document.getElementById('l1-badge-category').innerText = item.category;
   document.getElementById('l1-topic-title').innerText = item.topic;
   document.getElementById('l1-question-desc').innerText = item.question;
+  syncMobileDrawerBadges();
   
   // Hide feedback box
   const fb = document.getElementById('l1-feedback-box');
@@ -663,6 +666,16 @@ function nextLevel1Exercise() {
   STATE.level1Id = nextItem.id;
   renderLevel1Sidebar();
   loadLevel1Exercise(nextItem.id);
+  syncMobileDrawerBadges();
+}
+
+function prevLevel1Exercise() {
+  const currentIdx = LEVEL1_DATA.findIndex(x => x.id === STATE.level1Id);
+  const prevItem = currentIdx > 0 ? LEVEL1_DATA[currentIdx - 1] : LEVEL1_DATA[LEVEL1_DATA.length - 1];
+  STATE.level1Id = prevItem.id;
+  renderLevel1Sidebar();
+  loadLevel1Exercise(prevItem.id);
+  syncMobileDrawerBadges();
 }
 
 function randomLevel1Exercise() {
@@ -733,6 +746,7 @@ function loadLevel2Exercise(id) {
   document.getElementById('l2-topic-title').innerText = item.topic;
   document.getElementById('l2-prompt-desc').innerText = item.prompt;
   document.getElementById('l2-formula-hint').innerHTML = `<strong>Công thức gợi ý:</strong> ${item.formula}`;
+  syncMobileDrawerBadges();
   
   // Load similar topic hint
   if (item.similarHint) {
@@ -852,6 +866,16 @@ function nextLevel2Exercise() {
   STATE.level2Id = nextItem.id;
   renderLevel2Sidebar();
   loadLevel2Exercise(nextItem.id);
+  syncMobileDrawerBadges();
+}
+
+function prevLevel2Exercise() {
+  const currentIdx = LEVEL2_DATA.findIndex(x => x.id === STATE.level2Id);
+  const prevItem = currentIdx > 0 ? LEVEL2_DATA[currentIdx - 1] : LEVEL2_DATA[LEVEL2_DATA.length - 1];
+  STATE.level2Id = prevItem.id;
+  renderLevel2Sidebar();
+  loadLevel2Exercise(prevItem.id);
+  syncMobileDrawerBadges();
 }
 
 function randomLevel2Exercise() {
@@ -923,6 +947,7 @@ function loadLevel3Exercise(id) {
   document.getElementById('l3-topic-title').innerText = item.topic;
   document.getElementById('l3-prompt-desc').innerText = item.prompt;
   document.getElementById('l3-formula-hint').innerHTML = `<strong>Công thức Lego Module:</strong> ${item.formula}`;
+  syncMobileDrawerBadges();
   
   // Load similar hint
   if (item.similarHint) {
@@ -1041,6 +1066,16 @@ function nextLevel3Exercise() {
   STATE.level3Id = nextItem.id;
   renderLevel3Sidebar();
   loadLevel3Exercise(nextItem.id);
+  syncMobileDrawerBadges();
+}
+
+function prevLevel3Exercise() {
+  const currentIdx = LEVEL3_DATA.findIndex(x => x.id === STATE.level3Id);
+  const prevItem = currentIdx > 0 ? LEVEL3_DATA[currentIdx - 1] : LEVEL3_DATA[LEVEL3_DATA.length - 1];
+  STATE.level3Id = prevItem.id;
+  renderLevel3Sidebar();
+  loadLevel3Exercise(prevItem.id);
+  syncMobileDrawerBadges();
 }
 
 function randomLevel3Exercise() {
@@ -1111,6 +1146,7 @@ function loadLevel4Exercise(id) {
   document.getElementById('l4-topic-title').innerText = item.topic;
   document.getElementById('l4-faulty-text').innerText = item.faultyText;
   document.getElementById('l4-diagnosis-text').innerHTML = `<strong>🩺 Chẩn đoán của bác sĩ văn học:</strong> ${item.diagnosis}`;
+  syncMobileDrawerBadges();
   document.getElementById('l4-prompt-desc').innerText = item.prompt;
   document.getElementById('l4-formula-hint').innerHTML = `<strong>Công thức phẫu thuật:</strong> ${item.formula}`;
   
@@ -1231,6 +1267,16 @@ function nextLevel4Exercise() {
   STATE.level4Id = nextItem.id;
   renderLevel4Sidebar();
   loadLevel4Exercise(nextItem.id);
+  syncMobileDrawerBadges();
+}
+
+function prevLevel4Exercise() {
+  const currentIdx = LEVEL4_DATA.findIndex(x => x.id === STATE.level4Id);
+  const prevItem = currentIdx > 0 ? LEVEL4_DATA[currentIdx - 1] : LEVEL4_DATA[LEVEL4_DATA.length - 1];
+  STATE.level4Id = prevItem.id;
+  renderLevel4Sidebar();
+  loadLevel4Exercise(prevItem.id);
+  syncMobileDrawerBadges();
 }
 
 function randomLevel4Exercise() {
@@ -1300,6 +1346,7 @@ function loadLevel5Exercise(id) {
   document.getElementById('l5-badge-type').innerText = item.category;
   document.getElementById('l5-topic-title').innerText = item.topic;
   document.getElementById('l5-prompt-desc').innerText = item.prompt;
+  syncMobileDrawerBadges();
   
   // Format outline
   const steps = item.scaffoldOutline.split('|').map(s => s.trim()).filter(Boolean);
@@ -1428,6 +1475,16 @@ function nextLevel5Exercise() {
   STATE.level5Id = nextItem.id;
   renderLevel5Sidebar();
   loadLevel5Exercise(nextItem.id);
+  syncMobileDrawerBadges();
+}
+
+function prevLevel5Exercise() {
+  const currentIdx = LEVEL5_DATA.findIndex(x => x.id === STATE.level5Id);
+  const prevItem = currentIdx > 0 ? LEVEL5_DATA[currentIdx - 1] : LEVEL5_DATA[LEVEL5_DATA.length - 1];
+  STATE.level5Id = prevItem.id;
+  renderLevel5Sidebar();
+  loadLevel5Exercise(prevItem.id);
+  syncMobileDrawerBadges();
 }
 
 function randomLevel5Exercise() {
@@ -1498,6 +1555,7 @@ function loadLevel6Exercise(id) {
   document.getElementById('l6-badge-type').innerText = item.category;
   document.getElementById('l6-topic-title').innerText = item.topic;
   document.getElementById('l6-prompt-desc').innerText = item.prompt;
+  syncMobileDrawerBadges();
   
   // Load similar hint
   if (item.similarHint) {
@@ -1693,6 +1751,16 @@ function nextLevel6Exercise() {
   STATE.level6Id = nextItem.id;
   renderLevel6Sidebar();
   loadLevel6Exercise(nextItem.id);
+  syncMobileDrawerBadges();
+}
+
+function prevLevel6Exercise() {
+  const currentIdx = LEVEL6_DATA.findIndex(x => x.id === STATE.level6Id);
+  const prevItem = currentIdx > 0 ? LEVEL6_DATA[currentIdx - 1] : LEVEL6_DATA[LEVEL6_DATA.length - 1];
+  STATE.level6Id = prevItem.id;
+  renderLevel6Sidebar();
+  loadLevel6Exercise(prevItem.id);
+  syncMobileDrawerBadges();
 }
 
 function randomLevel6Exercise() {
@@ -1783,6 +1851,7 @@ function loadMindmapExercise(id) {
   
   const elemCat = document.getElementById('mm-topic-category');
   if (elemCat) elemCat.innerText = item.category;
+  syncMobileDrawerBadges();
   
   const elemStatus = document.getElementById('mm-topic-status');
   if (elemStatus) {
@@ -2193,6 +2262,14 @@ function nextMindmapExercise() {
   const currentIdx = MINDMAP_DATA.findIndex(x => x.id === STATE.mindmapId);
   const nextItem = MINDMAP_DATA[currentIdx + 1] || MINDMAP_DATA[0];
   loadMindmapExercise(nextItem.id);
+  syncMobileDrawerBadges();
+}
+
+function prevMindmapExercise() {
+  const currentIdx = MINDMAP_DATA.findIndex(x => x.id === STATE.mindmapId);
+  const prevItem = currentIdx > 0 ? MINDMAP_DATA[currentIdx - 1] : MINDMAP_DATA[MINDMAP_DATA.length - 1];
+  loadMindmapExercise(prevItem.id);
+  syncMobileDrawerBadges();
 }
 
 function randomMindmapExercise() {
@@ -2797,6 +2874,107 @@ function setupEventListeners() {
 
   const btnMmCopyOut = document.getElementById('mm-btn-copy-outline');
   if (btnMmCopyOut) btnMmCopyOut.addEventListener('click', copyMindmapOutline);
+
+  // Mobile Drawer Backdrop click
+  const backdrop = document.getElementById('mobile-drawer-backdrop');
+  if (backdrop) backdrop.addEventListener('click', closeExerciseDrawer);
+
+  // Keyboard accessibility
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeExerciseDrawer();
+  });
+
+  // Auto close mobile drawer when selecting any exercise in sidebar
+  document.addEventListener('click', (e) => {
+    if (e.target.closest('.sidebar-item')) {
+      closeMobileDrawerAndScroll();
+    }
+  });
+
+  syncMobileDrawerBadges();
+}
+
+// ========================================================
+// MOBILE DRAWER & BOTTOM SHEET CONTROLS
+// ========================================================
+function openExerciseDrawer() {
+  const currentSection = document.querySelector('section[id^="view-"]:not([style*="display: none"])');
+  if (!currentSection) return;
+  const sidebar = currentSection.querySelector('.exercise-sidebar');
+  const backdrop = document.getElementById('mobile-drawer-backdrop');
+  if (sidebar) {
+    sidebar.classList.add('drawer-open');
+    document.body.classList.add('drawer-locked');
+  }
+  if (backdrop) {
+    backdrop.classList.add('active');
+  }
+}
+
+function closeExerciseDrawer() {
+  document.querySelectorAll('.exercise-sidebar.drawer-open').forEach(sb => {
+    sb.classList.remove('drawer-open');
+  });
+  document.body.classList.remove('drawer-locked');
+  const backdrop = document.getElementById('mobile-drawer-backdrop');
+  if (backdrop) {
+    backdrop.classList.remove('active');
+  }
+}
+
+function toggleExerciseDrawer() {
+  const currentSection = document.querySelector('section[id^="view-"]:not([style*="display: none"])');
+  if (!currentSection) return;
+  const sidebar = currentSection.querySelector('.exercise-sidebar');
+  if (sidebar && sidebar.classList.contains('drawer-open')) {
+    closeExerciseDrawer();
+  } else {
+    openExerciseDrawer();
+  }
+}
+
+function closeMobileDrawerAndScroll() {
+  closeExerciseDrawer();
+  if (window.innerWidth <= 900) {
+    const currentSection = document.querySelector('section[id^="view-"]:not([style*="display: none"])');
+    if (currentSection) {
+      const card = currentSection.querySelector('.exercise-card');
+      if (card) {
+        card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+  }
+}
+
+function syncMobileDrawerBadges() {
+  const l1Badge = document.getElementById('m-l1-cur-badge');
+  if (l1Badge && typeof LEVEL1_DATA !== 'undefined') {
+    l1Badge.innerText = `Bài ${STATE.level1Id || 1}/${LEVEL1_DATA.length}`;
+  }
+  const l2Badge = document.getElementById('m-l2-cur-badge');
+  if (l2Badge && typeof LEVEL2_DATA !== 'undefined') {
+    l2Badge.innerText = `Bài ${STATE.level2Id || 1}/${LEVEL2_DATA.length}`;
+  }
+  const l3Badge = document.getElementById('m-l3-cur-badge');
+  if (l3Badge && typeof LEVEL3_DATA !== 'undefined') {
+    l3Badge.innerText = `Bài ${STATE.level3Id || 1}/${LEVEL3_DATA.length}`;
+  }
+  const l4Badge = document.getElementById('m-l4-cur-badge');
+  if (l4Badge && typeof LEVEL4_DATA !== 'undefined') {
+    l4Badge.innerText = `Bài ${STATE.level4Id || 1}/${LEVEL4_DATA.length}`;
+  }
+  const l5Badge = document.getElementById('m-l5-cur-badge');
+  if (l5Badge && typeof LEVEL5_DATA !== 'undefined') {
+    l5Badge.innerText = `Đề ${STATE.level5Id || 1}/${LEVEL5_DATA.length}`;
+  }
+  const l6Badge = document.getElementById('m-l6-cur-badge');
+  if (l6Badge && typeof LEVEL6_DATA !== 'undefined') {
+    l6Badge.innerText = `Đề ${STATE.level6Id || 1}/${LEVEL6_DATA.length}`;
+  }
+  const mmBadge = document.getElementById('m-mm-cur-badge');
+  if (mmBadge && typeof MINDMAP_DATA !== 'undefined') {
+    mmBadge.innerText = `Đề ${STATE.mindmapId || 1}/${MINDMAP_DATA.length}`;
+  }
 }
 
 // Global start
